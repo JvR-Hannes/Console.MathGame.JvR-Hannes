@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using MathGame.JvR_Hannes.Models;
+using System.Diagnostics;
 
 namespace MathGame.JvR_Hannes
 {
@@ -40,6 +41,8 @@ namespace MathGame.JvR_Hannes
                 var result = Console.ReadLine();
                 stopwatch.Stop();
 
+                result = Helpers.ValidateResult(result);
+
                 if (int.Parse(result) == firstNumber / secondNumber)
                 {
                     Console.WriteLine("Your answer is correct!! Type any key to continue...");
@@ -63,7 +66,7 @@ namespace MathGame.JvR_Hannes
                 }
             }
 
-            Helpers.AddToHistory(score, "Division");
+            Helpers.AddToHistory(score, GameType.Division);
         }
 
         internal void MultiplicationGame(string message)
@@ -97,6 +100,8 @@ namespace MathGame.JvR_Hannes
                 var result = Console.ReadLine();
                 stopwatch.Stop();
 
+                result = Helpers.ValidateResult(result);
+
                 if (int.Parse(result) == firstNumber * secondNumber)
                 {
                     Console.WriteLine("Your answer is correct!! Type any key to continue...");
@@ -119,7 +124,7 @@ namespace MathGame.JvR_Hannes
                     Console.ReadLine();
                 }
             }
-            Helpers.AddToHistory(score, "Multiplication");
+            Helpers.AddToHistory(score, GameType.Multiplication);
         }
 
         internal void SubtractionGame(string message)
@@ -153,6 +158,8 @@ namespace MathGame.JvR_Hannes
                 var result = Console.ReadLine();
                 stopwatch.Stop();
 
+                result = Helpers.ValidateResult(result);
+
                 if (int.Parse(result) == firstNumber - secondNumber)
                 {
                     Console.WriteLine("Your answer is correct!! Type any key to continue...");
@@ -176,7 +183,7 @@ namespace MathGame.JvR_Hannes
                 }
             }
 
-            Helpers.AddToHistory(score, "Subtraction");
+            Helpers.AddToHistory(score, GameType.Subtraction);
         }
 
         internal void AdditionGame(string message)
@@ -212,6 +219,8 @@ namespace MathGame.JvR_Hannes
                 var result = Console.ReadLine();
                 stopwatch.Stop(); // Stopwatch stops after the question is answered
 
+                result = Helpers.ValidateResult(result);
+
                 if (int.Parse(result) == firstNumber + secondNumber)
                 {
                     Console.WriteLine("Your answer is correct!! Type any key to continue...");
@@ -236,7 +245,7 @@ namespace MathGame.JvR_Hannes
                 }
             }
 
-            Helpers.AddToHistory(score, "Addition");
+            Helpers.AddToHistory(score, GameType.Addition);
 
         }
     }
