@@ -5,9 +5,9 @@
         GameEngine gamesClass = new();
         internal void ShowMenu(string name, DateTime date)
         {
-            Console.WriteLine("----------------------------------------");
+            Console.Clear();
             Console.WriteLine($"Hello {name}. It's {date.DayOfWeek}. This is your math's game. It's great that you're working on improving yourself\n");
-
+            Console.ReadLine();
             var isGameOn = true;
 
             do
@@ -27,6 +27,14 @@
                 Console.WriteLine("----------------------------------------");
 
                 var gameSelected = Console.ReadLine();
+
+                while (string.IsNullOrEmpty(gameSelected))
+                {
+                    Console.WriteLine("Please choose a option from the menu");
+                    gameSelected = Console.ReadLine();
+                    continue;
+                }
+                
 
                 switch (gameSelected.Trim().ToLower())
                 {
