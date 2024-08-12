@@ -26,14 +26,16 @@ void Menu(string name)
     do
     {
         Console.Clear();
-        Console.WriteLine(@$"What game would you like to play today? Choose from the options below:
+        Console.WriteLine(
+ @$"What game would you like to play today? Choose from the options below:
 
-    A - Addition
-    S - Subtraction
-    M - Multiplication
-    D - Division
-    R - Random Game
-    Q - Quit the Program");
+ V - View Previous Games
+ A - Addition
+ S - Subtraction
+ M - Multiplication
+ D - Division
+ R - Random Game
+ Q - Quit the Program");
 
         Console.WriteLine("----------------------------------------");
 
@@ -41,6 +43,9 @@ void Menu(string name)
 
         switch (gameSelected.Trim().ToLower())
         {
+            case "v":
+                GetPreviousGames();
+                break;
             case "a":
                 AdditionGame("Addition game");
                 break;
@@ -59,7 +64,6 @@ void Menu(string name)
             case "q":
                 Console.WriteLine("Goodbye!");
                 isGameOn = false;
-                Environment.Exit(1);
                 break;
             default:
                 Console.WriteLine("Invalid Input!");
@@ -69,9 +73,25 @@ void Menu(string name)
     } while (isGameOn);
 }
 
+void GetPreviousGames()
+{
+    Console.Clear();
+    Console.WriteLine("Games History");
+    Console.WriteLine("----------------------------");
+    foreach (var game in games)
+    {
+        Console.WriteLine(game);
+    }
+    Console.WriteLine("-----------------------------\n");
+    Console.WriteLine("Press any key to go back to the main menu");
+    Console.ReadLine();
+}
+
 void RandomGame(string message)
 {
+    Console.Clear();
     Console.WriteLine(message);
+    Console.WriteLine("Still under Construction");
     // Insert StartTimer() here
 }
 
@@ -125,6 +145,8 @@ void DivisionGame(string message)
             Console.ReadLine();
         }
     }
+
+    AddToHistory(score, "Division");
 }
 
 void MultiplicationGame(string message)
@@ -180,6 +202,7 @@ void MultiplicationGame(string message)
             Console.ReadLine();
         }
     }
+    AddToHistory(score, "Multiplication");
 }
 
 void SubtractionGame(string message)
@@ -235,6 +258,8 @@ void SubtractionGame(string message)
             Console.ReadLine();
         }
     }
+
+    AddToHistory(score, "Subtraction");
 }
 
 void AdditionGame(string message)
@@ -294,8 +319,13 @@ void AdditionGame(string message)
         }
     }
 
-    games.Add("");
+    AddToHistory(score, "Addition");
 
+}
+
+void AddToHistory(int gameScore, string gameType)
+{
+    games.Add($"{DateTime.Now} - {gameType}: Score = {gameScore}pts");
 }
 
 int[] GetDivisionNumbers()
