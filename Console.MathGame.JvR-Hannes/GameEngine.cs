@@ -31,7 +31,7 @@ namespace MathGame.JvR_Hannes
 
             for (int i = 0; i < numberOfQuestions; i++)
             {
-                var divisionNumbers = GetDivisionNumbers();
+                var divisionNumbers = Helpers.GetDivisionNumbers();
                 var firstNumber = divisionNumbers[0];
                 var secondNumber = divisionNumbers[1];
 
@@ -63,7 +63,7 @@ namespace MathGame.JvR_Hannes
                 }
             }
 
-            AddToHistory(score, "Division");
+            Helpers.AddToHistory(score, "Division");
         }
 
         internal void MultiplicationGame(string message)
@@ -119,7 +119,7 @@ namespace MathGame.JvR_Hannes
                     Console.ReadLine();
                 }
             }
-            AddToHistory(score, "Multiplication");
+            Helpers.AddToHistory(score, "Multiplication");
         }
 
         internal void SubtractionGame(string message)
@@ -176,7 +176,7 @@ namespace MathGame.JvR_Hannes
                 }
             }
 
-            AddToHistory(score, "Subtraction");
+            Helpers.AddToHistory(score, "Subtraction");
         }
 
         internal void AdditionGame(string message)
@@ -236,7 +236,7 @@ namespace MathGame.JvR_Hannes
                 }
             }
 
-            AddToHistory(score, "Addition");
+            Helpers.AddToHistory(score, "Addition");
 
         }
     }

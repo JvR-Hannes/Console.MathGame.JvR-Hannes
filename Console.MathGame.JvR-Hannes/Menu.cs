@@ -3,6 +3,7 @@
     internal class Menu
     {
         GameEngine engine = new();
+
         internal void ShowMenu(string name, DateTime date)
         {
             Console.WriteLine("----------------------------------------");
@@ -31,7 +32,7 @@
                 switch (gameSelected.Trim().ToLower())
                 {
                     case "v":
-                        GetPreviousGames();
+                        Helpers.GetPreviousGames();
                         break;
                     case "a":
                         gameEngine.AdditionGame("Addition game");

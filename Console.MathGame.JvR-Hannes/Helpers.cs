@@ -2,6 +2,7 @@
 {
     internal class Helpers
     {
+        static List<string> games;
         internal static void GetPreviousGames()
         {
             Console.Clear();
@@ -15,13 +16,10 @@
             Console.WriteLine("Press any key to go back to the main menu");
             Console.ReadLine();
         }
-
-
         internal static void AddToHistory(int gameScore, string gameType)
         {
             games.Add($"{DateTime.Now} - {gameType}: Score = {gameScore}pts");
         }
-
         internal static int[] GetDivisionNumbers()
         {
             var random = new Random();
