@@ -1,4 +1,6 @@
-﻿var date = DateTime.UtcNow;
+﻿using System.Diagnostics;
+
+var date = DateTime.UtcNow;
 
 string name = GetName();
 
@@ -64,24 +66,214 @@ void RandomGame(string message)
 void DivisionGame(string message)
 {
     Console.WriteLine(message);
-    // Insert StartTimer() here
+
+    var score = 0;
+    Stopwatch stopwatch = new Stopwatch();
+
+    // Requesting the number of questions from the user
+    Console.WriteLine("How many questions would you like to answer?");
+    int numberOfQuestions;
+
+    while (!int.TryParse(Console.ReadLine(), out numberOfQuestions) || numberOfQuestions <= 0)
+    {
+        Console.WriteLine("Please enter a valid positive number");
+    }
+
+    for (int i = 0; i < numberOfQuestions; i++)
+    {
+        var divisionNumbers = GetDivisionNumbers();
+        var firstNumber = divisionNumbers[0];
+        var secondNumber = divisionNumbers[1];
+
+        stopwatch.Start();
+        Console.WriteLine($"{firstNumber} / {secondNumber}");
+        var result = Console.ReadLine();
+        stopwatch.Stop();
+
+        if (int.Parse(result) == firstNumber / secondNumber)
+        {
+            Console.WriteLine("Your answer is correct!! Type any key to continue...");
+            score++;
+            Console.ReadLine();
+        }
+        else
+        {
+            Console.WriteLine("Your answer was incorrect. Type any key for the next question.");
+            Console.ReadLine();
+        }
+
+        if (i == numberOfQuestions - 1)
+        {
+            Console.WriteLine($"Game Over. You final score is {score}/{numberOfQuestions}. You took {stopwatch.Elapsed.TotalSeconds} seconds to answer the question.");
+        }
+    }
 }
 
 void MultiplicationGame(string message)
 {
     Console.WriteLine(message);
-    // Insert StartTimer() here
+
+    var random = new Random();
+    var score = 0;
+    Stopwatch stopwatch = new Stopwatch();
+
+    // Requesting the number of questions from the user
+    Console.WriteLine("How many questions would you like to answer?");
+    int numberOfQuestions;
+
+    while (!int.TryParse(Console.ReadLine(), out numberOfQuestions) || numberOfQuestions <= 0)
+    {
+        Console.WriteLine("Please enter a valid positive number");
+    }
+
+    int firstNumber;
+    int secondNumber;
+
+    for (int i = 0; i < numberOfQuestions; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
+
+        stopwatch.Start();
+        Console.WriteLine($"{firstNumber} x {secondNumber}");
+        var result = Console.ReadLine();
+        stopwatch.Stop();
+
+        if (int.Parse(result) == firstNumber * secondNumber)
+        {
+            Console.WriteLine("Your answer is correct!! Type any key to continue...");
+            score++;
+            Console.ReadLine();
+        }
+        else
+        {
+            Console.WriteLine("Your answer was incorrect. Type any key for the next question.");
+            Console.ReadLine();
+        }
+
+        if (i == numberOfQuestions - 1)
+        {
+            Console.WriteLine($"Game Over. You final score is {score}/{numberOfQuestions}. You took {stopwatch.Elapsed.TotalSeconds} seconds to answer the question.");
+        }
+    }
 }
 
 void SubtractionGame(string message)
 {
     Console.WriteLine(message);
-    // Insert StartTimer() here
+
+    var random = new Random();
+    var score = 0;
+    Stopwatch stopwatch = new Stopwatch();
+
+    // Requesting the number of questions from the user
+    Console.WriteLine("How many questions would you like to answer?");
+    int numberOfQuestions;
+
+    while (!int.TryParse(Console.ReadLine(), out numberOfQuestions) || numberOfQuestions <= 0)
+    {
+        Console.WriteLine("Please enter a valid positive number");
+    }
+
+    int firstNumber;
+    int secondNumber;
+
+    for (int i = 0; i < numberOfQuestions; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
+
+        stopwatch.Start();
+        Console.WriteLine($"{firstNumber} - {secondNumber}");
+        var result = Console.ReadLine();
+        stopwatch.Stop();
+
+        if (int.Parse(result) == firstNumber - secondNumber)
+        {
+            Console.WriteLine("Your answer is correct!! Type any key to continue...");
+            score++;
+            Console.ReadLine();
+        }
+        else
+        {
+            Console.WriteLine("Your answer was incorrect. Type any key for the next question.");
+            Console.ReadLine();
+        }
+
+        if (i == numberOfQuestions - 1)
+        {
+            Console.WriteLine($"Game Over. You final score is {score}/{numberOfQuestions}. You took {stopwatch.Elapsed.TotalSeconds} seconds to answer the question.");
+        }
+    }
 }
 
 void AdditionGame(string message)
 {
     Console.WriteLine(message);
-    // Insert StartTimer() here
+
     var random = new Random();
+    var score = 0;
+    Stopwatch stopwatch = new Stopwatch();
+
+    // Requesting the number of questions from the user
+    Console.WriteLine("How many questions would you like to answer?");
+    int numberOfQuestions;
+
+    // Checking if the user inputs a desired input otherwise inform them to input the correct & desired input
+    while (!int.TryParse(Console.ReadLine(), out numberOfQuestions) || numberOfQuestions <= 0)
+    {
+        Console.WriteLine("Please enter a valid positive number");
+    }
+
+    int firstNumber;
+    int secondNumber;
+
+    for (int i = 0; i < numberOfQuestions; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
+
+        stopwatch.Start(); // Stopwatch starts before the question is asked
+        Console.WriteLine($"{firstNumber} + {secondNumber}");
+        var result = Console.ReadLine();
+        stopwatch.Stop(); // Stopwatch stops after the question is answered
+
+        if (int.Parse(result) == firstNumber + secondNumber)
+        {
+            Console.WriteLine("Your answer is correct!! Type any key to continue...");
+            score++;
+            Console.ReadLine();
+        }
+        else
+        {
+            Console.WriteLine("Your answer was incorrect. Type any key for the next question.");
+            Console.ReadLine();
+        }
+
+        if (i == numberOfQuestions - 1) 
+        {
+            Console.WriteLine($"Game Over. You final score is {score}/{numberOfQuestions}. You took {stopwatch.Elapsed.TotalSeconds} seconds to answer the question.");
+        }
+    }
+
+}
+
+int[] GetDivisionNumbers()
+{
+    var random = new Random();
+    var firstNumber = random.Next(1, 99);
+    var secondNumber = random.Next(1, 99);
+
+    var result = new int[2];
+
+    while (firstNumber % secondNumber != 0)
+    {
+       firstNumber = random.Next(1, 99);
+       secondNumber = random.Next(1, 99);
+    }
+
+    result[0] = firstNumber;
+    result[1] = secondNumber;
+
+    return result;
 }
