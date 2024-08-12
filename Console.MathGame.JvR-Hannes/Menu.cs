@@ -16,13 +16,13 @@
                 Console.WriteLine(
          @$"What game would you like to play today? Choose from the options below:
 
- V - View Previous Games
- A - Addition
- S - Subtraction
- M - Multiplication
- D - Division
- R - Random Game
- Q - Quit the Program");
+         V - View Previous Games
+         A - Addition
+         S - Subtraction
+         M - Multiplication
+         D - Division
+         R - Random Game
+         Q - Quit the Program");
 
                 Console.WriteLine("----------------------------------------");
 
