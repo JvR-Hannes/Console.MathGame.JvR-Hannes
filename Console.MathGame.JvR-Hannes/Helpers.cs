@@ -2,7 +2,7 @@
 {
     internal class Helpers
     {
-        static List<string> games;
+        static List<string> games = new();
         internal static void GetPreviousGames()
         {
             Console.Clear();

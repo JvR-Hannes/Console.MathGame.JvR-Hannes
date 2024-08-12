@@ -2,8 +2,7 @@
 {
     internal class Menu
     {
-        GameEngine engine = new();
-
+        GameEngine gameClass = new();
         internal void ShowMenu(string name, DateTime date)
         {
             Console.WriteLine("----------------------------------------");
@@ -35,19 +34,19 @@
                         Helpers.GetPreviousGames();
                         break;
                     case "a":
-                        gameEngine.AdditionGame("Addition game");
+                        gameClass.AdditionGame("Addition game");
                         break;
                     case "s":
-                        gameEngine.SubtractionGame("Subtraction game");
+                        gameClass.SubtractionGame("Subtraction game");
                         break;
                     case "m":
-                        gameEngine.MultiplicationGame("Multiplication game");
+                        gameClass.MultiplicationGame("Multiplication game");
                         break;
                     case "d":
-                        gameEngine.DivisionGame("Division game");
+                        gameClass.DivisionGame("Division game");
                         break;
                     case "r":
-                        gameEngine.RandomGame("Random game");
+                        gameClass.RandomGame("Random game");
                         break;
                     case "q":
                         Console.WriteLine("Goodbye!");
