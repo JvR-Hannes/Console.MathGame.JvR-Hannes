@@ -89,7 +89,6 @@ namespace MathGame.JvR_Hannes
 
             Helpers.AddToHistory(score, GameType.Random);
         }
-
         internal void DivisionGame(string message)
         {
             Console.Clear();
@@ -145,7 +144,6 @@ namespace MathGame.JvR_Hannes
 
             Helpers.AddToHistory(score, GameType.Division);
         }
-
         internal void MultiplicationGame(string message)
         {
             Console.Clear();
@@ -203,7 +201,6 @@ namespace MathGame.JvR_Hannes
             }
             Helpers.AddToHistory(score, GameType.Multiplication);
         }
-
         internal void SubtractionGame(string message)
         {
             Console.Clear();
@@ -262,7 +259,6 @@ namespace MathGame.JvR_Hannes
 
             Helpers.AddToHistory(score, GameType.Subtraction);
         }
-
         internal void AdditionGame(string message)
         {
             Console.Clear();
