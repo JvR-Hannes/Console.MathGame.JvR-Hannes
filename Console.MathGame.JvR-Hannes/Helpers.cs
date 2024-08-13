@@ -1,10 +1,12 @@
 ﻿using MathGame.JvR_Hannes.Models;
+using System;
 
 namespace MathGame.JvR_Hannes
 {
     internal class Helpers
     {
         static List<Game> games = new List<Game>();
+        
         internal static void GetPreviousGames()
         {
             Console.Clear();
@@ -68,6 +70,13 @@ namespace MathGame.JvR_Hannes
                 name = Console.ReadLine();
             }
             return name;
+        }
+
+        internal static char GetRandomOperator(Random random)
+        {
+            char[] operators = { '+', '-', '*', '/' };
+            int index = random.Next(operators.Length);
+            return operators[index];
         }
     }
 }

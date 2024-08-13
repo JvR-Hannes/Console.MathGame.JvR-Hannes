@@ -9,8 +9,85 @@ namespace MathGame.JvR_Hannes
         {
             Console.Clear();
             Console.WriteLine(message);
-            Console.WriteLine("Still under Construction");
-            // Insert StartTimer() here
+
+            var random = new Random();
+            var score = 0;
+            Stopwatch stopwatch = new Stopwatch();
+
+            // Requesting the number of questions from the user
+            Console.WriteLine("How many questions would you like to answer?");
+            int numberOfQuestions;
+
+            while (!int.TryParse(Console.ReadLine(), out numberOfQuestions) || numberOfQuestions <= 0)
+            {
+                Console.WriteLine("Please enter a valid positive number");
+            }
+
+            int firstNumber;
+            int secondNumber;
+
+            for (int i = 0; i < numberOfQuestions; i++)
+            {
+                firstNumber = random.Next(1, 9);
+                secondNumber = random.Next(1, 9);
+                char operation = Helpers.GetRandomOperator(random);
+
+                var correctAnswer = 0;
+                var operationName = "";
+
+                switch (operation)
+                {
+                    case '+':
+                        correctAnswer = firstNumber + secondNumber;
+                        operationName = "Addition";
+                        break;
+                    case '-':
+                        correctAnswer = firstNumber - secondNumber;
+                        operationName = "Subtraction";
+                        break;
+                    case '*':
+                        correctAnswer = firstNumber * secondNumber;
+                        operationName = "Multiplication";
+                        break;
+                    case '/':
+                        var divisionNumbers = Helpers.GetDivisionNumbers();
+                        firstNumber = divisionNumbers[0];
+                        secondNumber = divisionNumbers[1];
+                        
+                        correctAnswer = firstNumber / secondNumber;
+                        operationName = "Division";
+                        break;
+                }
+                int userAnswer;
+                stopwatch.Start();
+                Console.WriteLine($"{firstNumber}{operation}{secondNumber}");
+                var result = int.TryParse(Console.ReadLine(), out userAnswer);
+                stopwatch.Stop();
+
+                if (result && userAnswer == correctAnswer)
+                {
+                    Console.WriteLine("Your answer is correct!! Type any key to continue...");
+                    score++;
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Your answer was incorrect. Type any key for the next question.");
+                    Console.ReadLine();
+                }
+
+                TimeSpan ts = stopwatch.Elapsed;
+                string elapsedTime = string.Format("{0:0.0}", ts.TotalSeconds);
+
+                if (i == numberOfQuestions - 1)
+                {
+                    Console.WriteLine($"Game Over. You final score is {score}/{numberOfQuestions}. You took {elapsedTime} seconds to answer the question.");
+                    Console.WriteLine("Press any key to return to the menu");
+                    Console.ReadLine();
+                }
+            }
+
+            Helpers.AddToHistory(score, GameType.Random);
         }
 
         internal void DivisionGame(string message)
